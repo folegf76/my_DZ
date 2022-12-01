@@ -63,10 +63,12 @@ print(list_f)
 
 def decor(f):
     def f_decor(data):
-        file = open(data.__class__.__name__+".txt", "w")
-        file.write(f(data))
+        file = open(f'{data.__class__.__name__}.txt', "w")
+        temp = f(data)
+        file.write(temp)
+        file.flush()
         file.close()
-        return f(data)
+        return temp
     return f_decor
 
 
