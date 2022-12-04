@@ -6,7 +6,7 @@ class MyDescriptor:
         pass
 
     def __get__(self, instance_self, instance_class):
-        return instance_self.p
+        return instance_self.x * instance_self.y * instance_self.z
 
     def __set__(self, instance_self, value):
         raise AttributeError("field is read only")
@@ -17,7 +17,9 @@ class MyDescriptor:
 
 class Box:
     def __init__(self, x, y, z):
-        self.p = x*y*z
+        self.x = x
+        self.y = y
+        self.z = z
 
     volume = MyDescriptor()
 
